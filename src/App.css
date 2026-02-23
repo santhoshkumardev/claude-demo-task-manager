@@ -27,7 +27,7 @@
   margin-bottom: 1.5rem;
 }
 
-.task-form input {
+.task-form input[type='text'] {
   flex: 1;
   padding: 0.75rem 1rem;
   border: 2px solid #333;
@@ -38,7 +38,22 @@
   font-family: inherit;
 }
 
+.task-form .date-input {
+  padding: 0.75rem 0.75rem;
+  border: 2px solid #333;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+}
+
 .task-form input:focus {
+  outline: none;
+  border-color: #646cff;
+}
+
+.task-form .date-input:focus {
   outline: none;
   border-color: #646cff;
 }
@@ -134,6 +149,29 @@
   opacity: 0.5;
 }
 
+/* Task Meta & Due Dates */
+.task-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.due-date {
+  font-size: 0.78rem;
+  color: #888;
+  white-space: nowrap;
+}
+
+.due-date.overdue {
+  color: #ff4444;
+  font-weight: 600;
+}
+
+.task-item.overdue {
+  border-left: 3px solid #ff4444;
+}
+
 .delete-btn {
   background: none;
   border: none;
@@ -159,7 +197,8 @@
 }
 
 @media (prefers-color-scheme: light) {
-  .task-form input {
+  .task-form input[type='text'],
+  .task-form .date-input {
     border-color: #ddd;
   }
 
