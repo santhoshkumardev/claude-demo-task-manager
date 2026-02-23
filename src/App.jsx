@@ -5,12 +5,23 @@ import TaskFilter from './components/TaskFilter';
 import TaskList from './components/TaskList';
 import './App.css';
 
+const SAMPLE_TASKS = [
+  { id: '1', text: 'Review Q1 budget proposal', completed: true, dueDate: '2026-02-20' },
+  { id: '2', text: 'Prepare CIO presentation slides', completed: false, dueDate: '2026-02-25' },
+  { id: '3', text: 'Migrate legacy auth service to OAuth 2.0', completed: false, dueDate: '2026-03-10' },
+  { id: '4', text: 'Schedule vendor security audit', completed: true, dueDate: '2026-02-18' },
+  { id: '5', text: 'Update disaster recovery runbook', completed: false, dueDate: '2026-02-15' },
+  { id: '6', text: 'Deploy monitoring dashboards to prod', completed: true, dueDate: null },
+  { id: '7', text: 'Draft API deprecation timeline', completed: false, dueDate: '2026-03-01' },
+  { id: '8', text: 'Onboard new DevOps engineer', completed: false, dueDate: null },
+];
+
 export default function App() {
-  const [tasks, setTasks] = useLocalStorage('tasks', []);
+  const [tasks, setTasks] = useLocalStorage('tasks', SAMPLE_TASKS);
   const [filter, setFilter] = useState('all');
 
-  const addTask = (text) => {
-    setTasks([...tasks, { id: crypto.randomUUID(), text, completed: false }]);
+  const addTask = (text, dueDate) => {
+    setTasks([...tasks, { id: crypto.randomUUID(), text, completed: false, dueDate }]);
   };
 
   const toggleTask = (id) => {
